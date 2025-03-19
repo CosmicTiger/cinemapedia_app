@@ -17,7 +17,7 @@ class MovieMapper {
       popularity: movieDB.popularity,
       posterPath: (movieDB.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500/${movieDB.posterPath}'
-          : 'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=',
+          : 'no-poster',
       releaseDate: movieDB.releaseDate.toString(),
       title: movieDB.title,
       video: movieDB.video,
