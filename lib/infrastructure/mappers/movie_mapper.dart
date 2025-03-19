@@ -7,7 +7,7 @@ class MovieMapper {
   static Movie movieDBToEntity(MovieFromMovieDB movieDB) => Movie(
       adult: movieDB.adult,
       backdropPath: (movieDB.backdropPath != '')
-          ? 'https://image.tmdb.org/t/p/w500/${movieDB.backdropPath}'
+          ? 'https://image.tmdb.org/t/p/w500${movieDB.backdropPath}'
           : 'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=',
       genreIds: movieDB.genreIds.map((e) => e.toString()).toList(),
       id: movieDB.id,
@@ -16,7 +16,7 @@ class MovieMapper {
       overview: movieDB.overview,
       popularity: movieDB.popularity,
       posterPath: (movieDB.posterPath != '')
-          ? 'https://image.tmdb.org/t/p/w500/${movieDB.posterPath}'
+          ? 'https://image.tmdb.org/t/p/w500${movieDB.posterPath}'
           : 'no-poster',
       releaseDate: movieDB.releaseDate.toString(),
       title: movieDB.title,
