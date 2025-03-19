@@ -1,6 +1,6 @@
 import 'package:cinemapedia_app/domain/entities/movie.dart';
 
-abstract class MoviesDatasource {
+abstract class MoviesDataSource {
   /// NOTE: This should be abstract because in theory we don't really know for sure
   /// from where the data will be coming from considering the huge amount of APIs that may
   /// exists.

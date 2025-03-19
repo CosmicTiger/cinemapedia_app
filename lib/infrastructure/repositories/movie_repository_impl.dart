@@ -3,7 +3,7 @@ import 'package:cinemapedia_app/domain/entities/movie.dart';
 import 'package:cinemapedia_app/domain/repositories/movies_repository.dart';
 
 class MovieRepositoryImpl extends MoviesRepository {
-  final MoviesDatasource moviesDatasource;
+  final MoviesDataSource moviesDatasource;
   MovieRepositoryImpl(this.moviesDatasource);
 
   @override

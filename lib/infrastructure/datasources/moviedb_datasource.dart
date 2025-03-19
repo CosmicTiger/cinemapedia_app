@@ -6,7 +6,7 @@ import 'package:cinemapedia_app/domain/entities/movie.dart';
 import 'package:cinemapedia_app/infrastructure/mappers/movie_mapper.dart';
 import 'package:cinemapedia_app/infrastructure/models/moviedb/moviedb_response.dart';
 
-class MoviedbDatasource extends MoviesDatasource {
+class MovieDBDataSource extends MoviesDataSource {
   final dio = Dio(BaseOptions(
       baseUrl: 'https://api.themoviedb.org/3',
       queryParameters: {
