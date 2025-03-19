@@ -37,16 +37,57 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final slideShowMovies = ref.watch(moviesSlideshowProvider);
 
-    return Column(children: [
-      CustomAppBar(),
-      MoviesSlideshow(movies: slideShowMovies),
-      MovieHorizontalListView(
-        movies: nowPlayingMovies,
-        title: 'On teathers',
-        subtitle: 'Thursday 20th',
-        loadNextPage: () =>
-            ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-      ),
-    ]);
+    /// NOTE: A CustomScrollView uses slivers which are special widgets that works in unison with ScrollView
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          centerTitle: false,
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+              titlePadding: const EdgeInsets.only(left: 16, bottom: 12),
+              title: CustomAppBar()),
+        ),
+        SliverList(
+            delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return Column(children: [
+              // CustomAppBar(),
+              MoviesSlideshow(movies: slideShowMovies),
+              MovieHorizontalListView(
+                movies: nowPlayingMovies,
+                title: 'On teathers',
+                subtitle: 'Thursday 20th',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MovieHorizontalListView(
+                movies: nowPlayingMovies,
+                title: 'Coming soon',
+                subtitle: 'This month',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MovieHorizontalListView(
+                movies: nowPlayingMovies,
+                title: 'Popular',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              MovieHorizontalListView(
+                movies: nowPlayingMovies,
+                title: 'Best rated',
+                subtitle: 'Of all time',
+                loadNextPage: () =>
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+              ),
+              const SizedBox(
+                height: 10,
+              )
+            ]);
+          },
+          childCount: 10,
+        ))
+      ],
+    );
   }
 }
