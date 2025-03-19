@@ -12,6 +12,15 @@ final nowPlayingMoviesProvider =
   return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
 });
 
+/// NOTE: Only Riverpod let us to work with several instances from the same class
+/// in comparison with Provider lib from Flutter.
+final popularMoviesProvider =
+    StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
+  final fetchMoreMovies = ref.watch(movieRepositoryProvider).getPopular;
+
+  return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
+});
+
 /// NOTE: The following Callback definition will help to understand our MovieNotifier
 /// that whatever the repository or any method of connection that handles our data will
 /// provide a callback in which could load the new list of movies.

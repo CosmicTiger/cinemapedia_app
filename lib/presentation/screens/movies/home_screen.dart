@@ -30,12 +30,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     super.initState();
 
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(popularMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final slideShowMovies = ref.watch(moviesSlideshowProvider);
+    final popularMovies = ref.watch(popularMoviesProvider);
 
     /// NOTE: A CustomScrollView uses slivers which are special widgets that works in unison with ScrollView
     return CustomScrollView(
@@ -68,10 +70,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
               ),
               MovieHorizontalListView(
-                movies: nowPlayingMovies,
+                movies: popularMovies,
                 title: 'Popular',
                 loadNextPage: () =>
-                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                    ref.read(popularMoviesProvider.notifier).loadNextPage(),
               ),
               MovieHorizontalListView(
                 movies: nowPlayingMovies,
