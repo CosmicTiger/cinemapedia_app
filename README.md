@@ -8,3 +8,9 @@
 ![Android Studio](https://img.shields.io/badge/android%20studio-346ac1?style=for-the-badge&logo=android%20studio&logoColor=white)
 
 A new Flutter project.
+
+
+# Dev Setup
+
+1. Copy the .env.template and renamed it to .env
+2. Change env variables needed ([The MovieDB](https://www.themoviedb.org/)) 
