@@ -19,7 +19,7 @@ class MovieMapper {
       posterPath: (movieDB.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500${movieDB.posterPath}'
           : 'no-poster',
-      releaseDate: movieDB.releaseDate.toString(),
+      releaseDate: movieDB.releaseDate ?? DateTime.now(),
       title: movieDB.title,
       video: movieDB.video,
       voteAverage: movieDB.voteAverage,
@@ -39,7 +39,7 @@ class MovieMapper {
       posterPath: (movieDB.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500${movieDB.posterPath}'
           : 'no-poster',
-      releaseDate: movieDB.releaseDate.toString(),
+      releaseDate: movieDB.releaseDate,
       title: movieDB.title,
       video: movieDB.video,
       voteAverage: movieDB.voteAverage,
