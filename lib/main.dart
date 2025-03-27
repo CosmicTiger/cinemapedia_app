@@ -6,6 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:cinemapedia_app/config/router/app_router.dart';
 import 'package:cinemapedia_app/config/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
@@ -18,6 +19,8 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AppTheme appTheme = ref.watch(themeNotifierProvider);
+
+    initializeDateFormatting();
 
     return MaterialApp.router(
       routerConfig: appRouter,

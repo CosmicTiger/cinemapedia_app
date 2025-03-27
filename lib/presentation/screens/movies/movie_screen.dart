@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:cinemapedia_app/config/helpers/human_formats.dart';
 import 'package:cinemapedia_app/domain/entities/movie.dart';
 import 'package:cinemapedia_app/presentation/providers/movies/movie_info_provider.dart';
 import 'package:cinemapedia_app/presentation/providers/providers.dart';
@@ -143,7 +144,12 @@ class _TitleAndOverview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(movie.title, style: textStyles.titleLarge),
-                    Text(movie.overview)
+                    Text(movie.overview),
+                    MovieRating(
+                        voteAverage: movie.voteAverage,
+                        popularity: movie.popularity),
+                    Text(
+                        'Release date: ${HumanFormats.shortDate(movie.releaseDate!)}')
                   ],
                 )),
           ],
