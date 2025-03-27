@@ -1,14 +1,14 @@
-class MovieDbVideosResponse {
+class MovieDBVideosResponse {
   final int id;
   final List<Result> results;
 
-  MovieDbVideosResponse({
+  MovieDBVideosResponse({
     required this.id,
     required this.results,
   });
 
-  factory MovieDbVideosResponse.fromJson(Map<String, dynamic> json) =>
-      MovieDbVideosResponse(
+  factory MovieDBVideosResponse.fromJson(Map<String, dynamic> json) =>
+      MovieDBVideosResponse(
         id: json["id"],
         results:
             List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
@@ -21,11 +21,11 @@ class MovieDbVideosResponse {
 }
 
 class Result {
-  final Iso6391 iso6391;
-  final Iso31661 iso31661;
+  final String iso6391;
+  final String iso31661;
   final String name;
   final String key;
-  final Site site;
+  final String site;
   final int size;
   final String type;
   final bool official;
@@ -46,11 +46,11 @@ class Result {
   });
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-        iso6391: iso6391Values.map[json["iso_639_1"]]!,
-        iso31661: iso31661Values.map[json["iso_3166_1"]]!,
+        iso6391: json["iso_639_1"],
+        iso31661: json["iso_3166_1"],
         name: json["name"],
         key: json["key"],
-        site: siteValues.map[json["site"]]!,
+        site: json["site"],
         size: json["size"],
         type: json["type"],
         official: json["official"],
@@ -59,39 +59,15 @@ class Result {
       );
 
   Map<String, dynamic> toJson() => {
-        "iso_639_1": iso6391Values.reverse[iso6391],
-        "iso_3166_1": iso31661Values.reverse[iso31661],
+        "iso_639_1": iso6391,
+        "iso_3166_1": iso31661,
         "name": name,
         "key": key,
-        "site": siteValues.reverse[site],
+        "site": site,
         "size": size,
         "type": type,
         "official": official,
         "published_at": publishedAt.toIso8601String(),
         "id": id,
       };
-}
-
-enum Iso31661 { MX }
-
-final iso31661Values = EnumValues({"MX": Iso31661.MX});
-
-enum Iso6391 { ES }
-
-final iso6391Values = EnumValues({"es": Iso6391.ES});
-
-enum Site { YOU_TUBE }
-
-final siteValues = EnumValues({"YouTube": Site.YOU_TUBE});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

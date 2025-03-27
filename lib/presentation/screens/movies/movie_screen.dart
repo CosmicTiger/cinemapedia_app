@@ -81,6 +81,11 @@ class _MovieDetails extends StatelessWidget {
         // NOTE: Show actors in ListView
         ActorsByMovie(movieId: movie.id),
 
+        // NOTE: Show Youtube Videos
+        VideosFromMovie(
+          movieId: movie.id,
+        ),
+
         // NOTE: Similar Movies
         SimilarMovies(movieId: movie.id),
 

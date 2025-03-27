@@ -21,7 +21,7 @@ class SimilarMovies extends ConsumerWidget {
     return similarMoviesFuture.when(
       data: (movies) => Container(
           margin: const EdgeInsets.only(bottom: 50),
-          child: MovieHorizontalListView(title: 'Recomended', movies: movies)),
+          child: MovieHorizontalListView(title: 'Recommended', movies: movies)),
       error: (_, __) =>
           Center(child: Text('No similar movies could be uploaded 💀')),
       loading: () => const Center(
