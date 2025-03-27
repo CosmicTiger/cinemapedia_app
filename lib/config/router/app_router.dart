@@ -22,5 +22,9 @@ final appRouter = GoRouter(
                 return MovieScreen(movieId: movieId);
               })
         ]),
+    GoRoute(
+      path: '/',
+      redirect: (_, __) => '/home/0',
+    ),
   ],
 );
