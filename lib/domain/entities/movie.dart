@@ -1,4 +1,13 @@
+import 'package:isar/isar.dart';
+
+part 'movie.g.dart';
+
+@collection
+
+/// NOTE: This annotation is used to indicate that this class is a Isar collection
 class Movie {
+  Id? isarId;
+
   /// NOTE: This should be the structure that in theory the API that we are going to request
   /// for information would return.
 
