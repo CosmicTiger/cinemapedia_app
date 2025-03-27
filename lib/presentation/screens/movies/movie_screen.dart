@@ -148,8 +148,14 @@ class _TitleAndOverview extends StatelessWidget {
                     MovieRating(
                         voteAverage: movie.voteAverage,
                         popularity: movie.popularity),
-                    Text(
-                        'Release date: ${HumanFormats.shortDate(movie.releaseDate!)}')
+                    Row(
+                      children: [
+                        const Text('Premiere:',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(width: 5),
+                        Text(HumanFormats.shortDate(movie.releaseDate!)),
+                      ],
+                    )
                   ],
                 )),
           ],
