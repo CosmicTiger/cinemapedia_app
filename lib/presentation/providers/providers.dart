@@ -10,3 +10,5 @@ export 'package:cinemapedia_app/presentation/providers/search/search_movies_prov
 export 'package:cinemapedia_app/presentation/providers/storage/local_storage_provider.dart';
 
 export 'package:cinemapedia_app/presentation/providers/storage/favorites_movies_provider.dart';
+
+export 'package:cinemapedia_app/presentation/providers/theme/theme_provider.dart';
