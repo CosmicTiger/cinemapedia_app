@@ -9,8 +9,8 @@
 
 A new Flutter project.
 
-
 # Dev Setup
 
 1. Copy the .env.template and renamed it to .env
-2. Change env variables needed ([The MovieDB](https://www.themoviedb.org/)) 
+2. Change env variables needed ([The MovieDB](https://www.themoviedb.org/))
+3. Any changes on the entity of Movie should have a CLI run `flutter pub run build_runner build` to generate the new model from Isar
