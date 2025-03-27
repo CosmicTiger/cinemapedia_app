@@ -37,7 +37,7 @@ class MovieRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<Movie>> getSimilarMovies(String movieId) async {
+  Future<List<Movie>> getSimilarMovies(int movieId) async {
     return moviesDatasource.getSimilarMovies(movieId);
   }
 }
