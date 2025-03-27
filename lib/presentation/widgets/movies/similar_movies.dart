@@ -1,3 +1,4 @@
+import 'package:cinemapedia_app/domain/entities/entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia_app/presentation/providers/providers.dart';
@@ -19,9 +20,9 @@ class SimilarMovies extends ConsumerWidget {
     final similarMoviesFuture = ref.watch(similarMoviesProvider(movieId));
 
     return similarMoviesFuture.when(
-      data: (movies) => Container(
-          margin: const EdgeInsets.only(bottom: 50),
-          child: MovieHorizontalListView(title: 'Recommended', movies: movies)),
+      data: (movies) => _Recommendations(
+        movies: movies,
+      ),
       error: (_, __) =>
           Center(child: Text('No similar movies could be uploaded 💀')),
       loading: () => const Center(
@@ -29,5 +30,22 @@ class SimilarMovies extends ConsumerWidget {
         strokeWidth: 2,
       )),
     );
+  }
+}
+
+class _Recommendations extends StatelessWidget {
+  final List<Movie> movies;
+
+  const _Recommendations({
+    required this.movies,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (movies.isEmpty) return const SizedBox();
+
+    return Container(
+        margin: const EdgeInsets.only(bottom: 50),
+        child: MovieHorizontalListView(title: 'Recommended', movies: movies));
   }
 }
