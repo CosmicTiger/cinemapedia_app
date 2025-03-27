@@ -41,22 +41,24 @@ class _VideosList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsetsDirectional.only(bottom: 50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                'Videos',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            ...videos.map((video) => _YouTubeVideoPlayer(
-                youtubeId: videos.first.youtubeKey, name: video.name)),
-          ],
-        ));
+    if (videos.isEmpty) {
+      return const SizedBox();
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            'Videos',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ...videos.map((video) => _YouTubeVideoPlayer(
+            youtubeId: videos.first.youtubeKey, name: video.name)),
+      ],
+    );
   }
 }
 
@@ -81,6 +83,7 @@ class _YouTubeVideoPlayerState extends State<_YouTubeVideoPlayer> {
     _controller = YoutubePlayerController(
       initialVideoId: widget.youtubeId,
       flags: const YoutubePlayerFlags(
+        showLiveFullscreenButton: false,
         autoPlay: false,
         mute: false,
         disableDragSeek: false,
@@ -107,6 +110,7 @@ class _YouTubeVideoPlayerState extends State<_YouTubeVideoPlayer> {
             player: YoutubePlayer(controller: _controller),
             builder: (context, player) {
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   player,
                   Text(
