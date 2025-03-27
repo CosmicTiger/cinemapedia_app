@@ -9,3 +9,5 @@ export 'package:cinemapedia_app/presentation/widgets/shared/custom_bottom_naviga
 
 export 'package:cinemapedia_app/presentation/widgets/movies/movie_masonry.dart';
 export 'package:cinemapedia_app/presentation/widgets/movies/movie_poster_link.dart';
+
+export 'package:cinemapedia_app/presentation/widgets/actors/actors_by_movie.dart';
