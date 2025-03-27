@@ -83,10 +83,11 @@ class _YouTubeVideoPlayerState extends State<_YouTubeVideoPlayer> {
     _controller = YoutubePlayerController(
       initialVideoId: widget.youtubeId,
       flags: const YoutubePlayerFlags(
+        hideThumbnail: true,
         showLiveFullscreenButton: false,
         autoPlay: false,
         mute: false,
-        disableDragSeek: false,
+        disableDragSeek: true,
         loop: false,
         isLive: false,
         forceHD: false,
