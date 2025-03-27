@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   final viewRoutes = const <Widget>[
     HomeView(),
-    SizedBox(), // Placeholder for the categories view
+    PopularView(), // Placeholder for the categories view
     FavoritesView(),
   ];
 
