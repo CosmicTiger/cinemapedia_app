@@ -16,7 +16,7 @@ class AppTheme {
   final int selectedColor;
   final bool isDarkMode;
 
-  AppTheme({this.selectedColor = 0, this.isDarkMode = false})
+  AppTheme({this.selectedColor = 0, this.isDarkMode = true})
       : assert(selectedColor >= 0, 'Selected color must be greater than 0'),
         assert(selectedColor < colorList.length,
             'Selected color must be less than ${colorList.length - 1}');

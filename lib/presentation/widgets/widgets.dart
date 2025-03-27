@@ -1,3 +1,5 @@
+export 'package:cinemapedia_app/presentation/widgets/movies/movie_rating.dart';
+
 export 'package:cinemapedia_app/presentation/widgets/shared/full_screen_loader.dart';
 
 export 'package:cinemapedia_app/presentation/widgets/movies/movie_horizontal_listview.dart';

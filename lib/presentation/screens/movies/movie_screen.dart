@@ -72,7 +72,7 @@ class _MovieDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
