@@ -47,14 +47,14 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(Icons.favorite_outline_sharp, size: 60, color: colors.primary),
-            Text('Ohhh no!!',
+            Text('Ohhh no!! 😢',
                 style: TextStyle(fontSize: 30, color: colors.primary)),
-            const Text('No tienes películas favoritas',
+            const Text('No favorite movies yet 📽️',
                 style: TextStyle(fontSize: 20, color: Colors.black45)),
             const SizedBox(height: 20),
             FilledButton.tonal(
                 onPressed: () => context.go('/home/0'),
-                child: const Text('Empieza a buscar'))
+                child: const Text('Begin to search 🎥 🕵️'))
           ],
         ),
       );
