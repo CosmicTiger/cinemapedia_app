@@ -47,7 +47,10 @@ class _HomeScreenState extends State<HomeScreen>
     }
 
     return Scaffold(
-      body: PageView(controller: pageController, children: viewRoutes),
+      body: PageView(
+          controller: pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: viewRoutes),
       bottomNavigationBar:
           CustomBottomNavigationBar(currentIndex: widget.pageIndex),
     );
