@@ -195,9 +195,10 @@ class _CustomSliverAppBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
-
     final AsyncValue isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
+
+    final size = MediaQuery.of(context).size;
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
     return SliverAppBar(
       backgroundColor: Colors.black,
@@ -234,6 +235,8 @@ class _CustomSliverAppBar extends ConsumerWidget {
                   return FadeIn(child: child);
                 }),
               ),
+
+              /// NOTE: Favorite button Gradient Background
               const _CustomGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
@@ -245,11 +248,8 @@ class _CustomSliverAppBar extends ConsumerWidget {
                     Colors.black54,
                     Colors.transparent,
                   ]),
-              const _CustomGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.8, 1.0],
-                  colors: [Colors.transparent, Colors.black54]),
+
+              /// NOTE: Back arrow button Gradient Background
               const _CustomGradient(begin: Alignment.topLeft, stops: [
                 0.0,
                 0.3
@@ -257,6 +257,13 @@ class _CustomSliverAppBar extends ConsumerWidget {
                 Colors.black87,
                 Colors.transparent,
               ]),
+
+              /// NOTE: Bottom Gradient Background
+              _CustomGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.7, 1.0],
+                  colors: [Colors.transparent, scaffoldBackgroundColor]),
             ],
           )),
     );
