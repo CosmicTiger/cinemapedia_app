@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia_app/config/helpers/human_formats.dart';
 import 'package:cinemapedia_app/domain/entities/movie.dart';
+import 'package:cinemapedia_app/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -85,28 +85,14 @@ class _Slide extends StatelessWidget {
                 width: 150,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    movie.posterPath,
-                    fit: BoxFit.cover,
-                    width: 150,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) {
-                        return GestureDetector(
-                            onTap: () =>
-                                context.push('/home/0/movie/${movie.id}'),
-                            child: FadeIn(child: child));
-                      }
-
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: const Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                  child: GestureDetector(
+                      onTap: () => context.push('/home/0/movie/${movie.id}'),
+                      child: FadeInImage(
+                          height: 220,
+                          fit: BoxFit.cover,
+                          placeholder: const AssetImage(
+                              'assets/loaders/bottle-loader.gif'),
+                          image: NetworkImage(movie.posterPath))),
                 )),
 
             const SizedBox(height: 5),
@@ -118,22 +104,8 @@ class _Slide extends StatelessWidget {
                     maxLines: 2, style: textStyles.titleSmall)),
 
             /// NOTE: Here goes the rating of the movie
-            SizedBox(
-              width: 150,
-              child: Row(
-                children: [
-                  Icon(Icons.star_half_outlined,
-                      color: Colors.yellow.shade800, size: 15),
-                  const SizedBox(width: 3),
-                  Text(movie.voteAverage.toString(),
-                      style: textStyles.bodyMedium
-                          ?.copyWith(color: Colors.yellow.shade800)),
-                  const Spacer(),
-                  Text(HumanFormats.number(movie.popularity),
-                      style: textStyles.bodySmall)
-                ],
-              ),
-            ),
+            MovieRating(
+                voteAverage: movie.voteAverage, popularity: movie.popularity)
           ],
         ));
   }
@@ -151,7 +123,7 @@ class _Title extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.only(top: 10),
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       child: Row(
         children: [
           if (title != null)

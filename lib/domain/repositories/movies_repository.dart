@@ -1,4 +1,4 @@
-import 'package:cinemapedia_app/domain/entities/movie.dart';
+import 'package:cinemapedia_app/domain/entities/entities.dart';
 
 abstract class MoviesRepository {
   /// NOTE: Reminder: Repository always calls out DataSource. That's why both should have the same methods.
@@ -15,4 +15,8 @@ abstract class MoviesRepository {
   Future<Movie> getMovieById(String id);
 
   Future<List<Movie>> searchMovies(String query);
+
+  Future<List<Movie>> getSimilarMovies(int movieId);
+
+  Future<List<Video>> getYoutubeVideosById(int movieId);
 }
