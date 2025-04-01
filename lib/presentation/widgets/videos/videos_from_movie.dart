@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:cinemapedia_app/presentation/widgets/videos/fake_youtube_player.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -107,19 +111,22 @@ class _YouTubeVideoPlayerState extends State<_YouTubeVideoPlayer> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: YoutubePlayerBuilder(
-            player: YoutubePlayer(controller: _controller),
-            builder: (context, player) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  player,
-                  Text(
-                    widget.name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              );
-            }));
+        child: kDebugMode && Platform.environment.containsKey('FLUTTER_TEST')
+            ? FakeYoutubePlayer(youtubeId: widget.youtubeId, name: widget.name)
+            : YoutubePlayerBuilder(
+                player: YoutubePlayer(controller: _controller),
+                builder: (context, player) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      player,
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  );
+                }));
   }
 }
